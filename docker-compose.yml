@@ -10,11 +10,22 @@ services:
     env_file:
       - ./docker_dotenv_files/.env
     depends_on:
-      - psql
-  psql:
-    container_name: psql
+      - postgresql-sexta
+    networks:
+      - bridge_network
+
+  postgresql-sexta:
+    container_name: postgresql-sexta
     image: postgres:13-alpine
     volumes:
       - ./data/postgres/data:/var/lib/postgresql/data/
     env_file:
       - ./docker_dotenv_files/.env
+    ports:
+      - "5432:5432"
+    networks:
+      - bridge_network
+
+networks:
+  bridge_network:
+    driver: bridge

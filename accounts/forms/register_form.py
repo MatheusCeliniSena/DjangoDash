@@ -14,9 +14,9 @@ class RegisterForm(forms.ModelForm):
         ]
 
     username = forms.CharField(
-        label='Username',
+        label='Nome de usuário',
         widget=forms.TextInput(attrs={
-            'placeholder': 'John Doe',
+            'placeholder': 'Matheus Sena',
             'class': 'bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'  # noqa
         }),
         error_messages={
@@ -28,7 +28,7 @@ class RegisterForm(forms.ModelForm):
     email = forms.CharField(
         label='Email',
         widget=forms.EmailInput(attrs={
-            'placeholder': 'name@company.com',
+            'placeholder': 'name@empresa.com',
             'class': 'bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'  # noqa
         }),
         error_messages={
@@ -38,7 +38,7 @@ class RegisterForm(forms.ModelForm):
     )
 
     password = forms.CharField(
-        label='Password',
+        label='Senha',
         widget=forms.PasswordInput(attrs={
             'placeholder': '••••••••',
             'class': 'bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'  # noqa
@@ -51,7 +51,7 @@ class RegisterForm(forms.ModelForm):
     )
 
     confirm_password = forms.CharField(
-        label='Confirm password',
+        label='Confirme a senha',
         widget=forms.PasswordInput(attrs={
             'placeholder': '••••••••',
             'class': 'bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'  # noqa

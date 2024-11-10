@@ -1,51 +1,52 @@
+# Usar a imagem base do Python 3.11 no Alpine Linux 3.19
 FROM python:3.11-alpine3.19
 LABEL mantainer="peagahvieira2003@gmail.com"
 
-# This environment variable is used to control whether Python should 
-# write bytecode files (.pyc) to disk. 1 = No, 0 = Yes
-ENV PYTHONDONTWRITEBYTECODE 1
+# Não escrever arquivos .pyc no disco
+ENV PYTHONDONTWRITEBYTECODE=1
 
-# Defines that Python output will be displayed immediately in the console or in 
-# other output devices, without being buffered.
-# In short, you will see Python outputs in real time.
-ENV PYTHONUNBUFFERED 1
+# Fazer o Python exibir saídas imediatamente (sem buffering)
+ENV PYTHONUNBUFFERED=1
 
-# Copy the local directory and "scripts" into the container.
+# Instalar dependências do sistema necessárias
+RUN apk add --no-cache \
+    gcc \
+    libc-dev \
+    libffi-dev \
+    musl-dev \
+    postgresql-dev \
+    npm
+
+# Copiar o diretório do projeto local e a pasta "scripts" para dentro do container
 COPY . /djangoapp
 COPY scripts /scripts
 
-# Enter the djangoapp folder in the container
+# Definir o diretório de trabalho dentro do container
 WORKDIR /djangoapp
 
-# Port 8000 will be available for connections external to the container
-# It is the port we will use for Django.
+# Expor a porta 8000 para permitir conexões externas ao container
 EXPOSE 8000
 
-# Install NPM package in docker.
-# npm install installs the depedendencies in your package. json config.
-# npm run build runs the script "build" and created a script which runs your application.
-RUN apk add npm && \
-  npm install && \
-  npm run build
+# Instalar dependências do NPM e compilar a aplicação
+RUN npm install && \
+    npm run build
 
-# RUN executes commands in a shell inside the container to build the image. 
-# The result of executing the command is stored in the file system 
-# image as a new layer.
-# Grouping commands into a single RUN can reduce the number of layers in the 
-# image and make it more efficient.
+# Criar e ativar um ambiente virtual, atualizar o pip e instalar as dependências do projeto
 RUN python -m venv /venv && \
-  /venv/bin/pip install --upgrade pip && \
-  /venv/bin/pip install -r /djangoapp/requirements.txt && \
-  adduser --disabled-password --no-create-home duser && \
-  chown -R duser:duser /venv && \
-  chmod -R +x /scripts
+    /venv/bin/pip install --upgrade pip && \
+    /venv/bin/pip install -r /djangoapp/requirements.txt
 
-# Add the scripts and venv/bin folder 
-# in the container's $PATH.
+# Adicionar um usuário sem privilégios e ajustar permissões
+RUN adduser --disabled-password --no-create-home duser && \
+    chown -R duser:duser /venv && \
+    chown -R duser:duser /djangoapp && \
+    chmod -R +x /scripts
+
+# Adicionar as pastas scripts e venv/bin ao PATH do container
 ENV PATH="/scripts:/venv/bin:$PATH"
 
-# Change user to duser
+# Mudar para o usuário não privilegiado
 USER duser
 
-# Execute the scripts/commands.sh file
+# Executar o script de comandos
 CMD ["commands.sh"]

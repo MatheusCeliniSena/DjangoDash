@@ -124,14 +124,14 @@ class PasswordResetCustomView(SuccessMessageMixin, PasswordResetView):
     email_template_name = 'accounts/mail/password_reset_email.html'
     subject_template_name = 'accounts/mail/password_reset_subject.txt'
     template_name = 'accounts/password_reset.html'
-    success_message = "We've emailed you instructions for setting your password"  # noqa
+    success_message = "We've emailed you instructions for setting your password"
     success_url = reverse_lazy('accounts:login')
 
 
-class PasswordResetConfirmCustomView(SuccessMessageMixin, PasswordResetConfirmView):  # noqa
+class PasswordResetConfirmCustomView(SuccessMessageMixin, PasswordResetConfirmView):
     form_class = SetPasswordCustomForm
     template_name = "accounts/password_reset_confirm.html"
-    success_message = "Your password has been set. You may go ahead and Login"  # noqa
+    success_message = "Your password has been set. You may go ahead and Login"
     success_url = reverse_lazy('accountsnts:login')
 
 

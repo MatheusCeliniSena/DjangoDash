@@ -13,14 +13,14 @@
                     <span class="ml-3">Home</span>
                 </a>
             </li>
-            <!-- Leads -->
+            <!-- Money flux -->
             <li>
                 <a href="{% url 'dashboard:leads' %}"
                    class="flex items-center p-2 text-base font-medium text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                    <i class="fa-solid fa-pencil fa-lg text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
-                       aria-hidden="true">
+                   <i class="fa-solid fa-money-bill-transfer fa-lg text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                   aria-hidden="true">
                     </i>
-                    <span class="ml-3">Leads</span>
+                    <span class="ml-3">Entra e saída</span>
                 </a>
             </li>
             <!-- Categories -->
@@ -30,50 +30,28 @@
                     <i class="fa-solid fa-folder fa-lg text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
                        aria-hidden="true">
                     </i>
-                    <span class="ml-3">Categories</span>
+                    <span class="ml-3">Categorias</span>
                 </a>
             </li>
-            <!-- Agents -->
+            <!-- Customers -->
             <li>
                 <a href="{% url 'dashboard:leads_agent' %}"
                    class="flex items-center p-2 text-base font-medium text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                     <i class="fa-solid fa-user-tie fa-lg text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
                        aria-hidden="true">
                     </i>
-                    <span class="ml-3">Agents</span>
+                    <span class="ml-3">Customers</span>
                 </a>
             </li>
-        </ul>
-        <ul class="pt-5 mt-5 space-y-2 border-t border-gray-200 dark:border-gray-700">
-            <!-- Documentation -->
+            <!-- Products -->
             <li>
-                <button type="button"
-                        class="flex items-center p-2 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                        aria-controls="dropdown-leads"
-                        data-collapse-toggle="dropdown-leads">
-                    <i class="fa-solid fa-file fa-lg flex-shrink-0 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
-                       aria-hidden="true">
+                <a href="{% url 'dashboard:leads_agent' %}"
+                class="flex items-center p-2 text-base font-medium text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                    <i class="fa-solid fa-box fa-lg text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                    aria-hidden="true">
                     </i>
-                    <span class="flex-1 ml-3 text-left whitespace-nowrap">Documentation</span>
-                    <i class="fa-sharp fa-solid fa-arrow-down fa-sm"></i>
-                </button>
-                <ul id="dropdown-leads" class="hidden py-2 space-y-2">
-                    <li>
-                        <a href="https://flowbite.com/blocks/"
-                           target="_blank"
-                           class="flex items-center p-2 pl-11 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Tailwind</a>
-                    </li>
-                    <li>
-                        <a href="https://tailwindcss.com"
-                           target="_blank"
-                           class="flex items-center p-2 pl-11 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Flowbite</a>
-                    </li>
-                    <li>
-                        <a href="https://github.com/Peagah-Vieira/Django-CRM"
-                           target="_blank"
-                           class="flex items-center p-2 pl-11 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Github Repository</a>
-                    </li>
-                </ul>
+                    <span class="ml-3">Products</span>
+                </a>
             </li>
         </ul>
     </div>
